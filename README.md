@@ -3,8 +3,16 @@
 - npx create-react-app
 - configure tailwind css
 - Header
+- Routing
 - Login Form
 - Signup Form
+- Form validation
+- useRef Hook
+- Firebase setup
+- Deploying to production
+- Create Sign up user account
+- Implement Signin API
+- Created our store with userSlice.
 
 # Features in my App
 
