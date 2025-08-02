@@ -6,7 +6,11 @@ import { Netflix_Background_Url } from "../utils/constants";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/slices/userSlice";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = React.useState(true);
@@ -15,6 +19,8 @@ const Login = () => {
   const email = React.useRef(null);
   const password1 = React.useRef(null);
   const password2 = React.useRef(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const toggleSignIn = () => {
     email.current.value = "";
@@ -36,7 +42,7 @@ const Login = () => {
     if (message) return;
 
     if (isSignIn) {
-      // Add sign-in logic here
+      // sign-in logic here
       async function signInUser() {
         const userCredential = await signInWithEmailAndPassword(
           auth,
@@ -44,6 +50,25 @@ const Login = () => {
           password1.current.value
         );
         const user = userCredential.user;
+        console.log("User created:", user);
+        updateProfile(user, {
+          displayName: name?.current?.value,
+        })
+          .then(() => {
+            const { uid, email, displayName } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName,
+              })
+            );
+            navigate("/browse");
+          })
+          .catch((error) => {
+            setErrorMessage(error.message);
+          });
+
         console.log("User signed in:", user);
       }
       signInUser().catch((error) => {
@@ -52,7 +77,7 @@ const Login = () => {
         }
       });
     } else {
-      // Add sign-up logic here
+      // sign-up logic here
       async function setUser() {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
@@ -60,6 +85,24 @@ const Login = () => {
           password1.current.value
         );
         const user = userCredential.user;
+        updateProfile(user, {
+          displayName: name?.current?.value,
+        })
+          .then(() => {
+            const { uid, email, displayName } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName,
+              })
+            );
+            navigate("/browse");
+          })
+          .catch((error) => {
+            setErrorMessage(error.message);
+          });
+        navigate("/browse");
         console.log("User created:", user);
       }
       setUser().catch((error) => {
