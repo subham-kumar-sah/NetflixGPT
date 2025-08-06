@@ -8,7 +8,6 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slices/userSlice";
 
@@ -19,7 +18,6 @@ const Login = () => {
   const email = React.useRef(null);
   const password1 = React.useRef(null);
   const password2 = React.useRef(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignIn = () => {
@@ -63,7 +61,6 @@ const Login = () => {
                 displayName: displayName,
               })
             );
-            navigate("/browse");
           })
           .catch((error) => {
             setErrorMessage(error.message);
@@ -97,12 +94,10 @@ const Login = () => {
                 displayName: displayName,
               })
             );
-            navigate("/browse");
           })
           .catch((error) => {
             setErrorMessage(error.message);
           });
-        navigate("/browse");
         console.log("User created:", user);
       }
       setUser().catch((error) => {

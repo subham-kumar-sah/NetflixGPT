@@ -13,6 +13,11 @@
 - Create Sign up user account
 - Implement Signin API
 - Created our store with userSlice.
+- Implemented Sign out
+- Update profile using firebase API
+- Sign out using firebase API
+- Bug Fix: If user is logged in we cannot bring it to signin/signup page if we change route.
+- Unscubscribed to the onAuthStateChange callback
 
 # Features in my App
 
