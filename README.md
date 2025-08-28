@@ -18,6 +18,8 @@
 - Sign out using firebase API
 - Bug Fix: If user is logged in we cannot bring it to signin/signup page if we change route.
 - Unscubscribed to the onAuthStateChange callback
+- Register for TMDB API and create an app and get access token
+- Get Data from TMDB nowPlaying movies list API.
 
 # Features in my App
 

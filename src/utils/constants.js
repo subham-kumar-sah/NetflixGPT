@@ -6,3 +6,12 @@ export const Netflix_Background_Url =
 
 export const User_Icon_Url =
   "https://occ-0-4994-2164.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229";
+
+export const API_OPTIONS = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MmNjOGJhOTA5Yzk3Njc5ZjEzZDA2NTczOWM3ZTVlMyIsIm5iZiI6MTc1NTYxNzg0OC45OTgwMDAxLCJzdWIiOiI2OGE0OWEzODE0ZTllNGFlNDVmZDIxMmYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.XN1n9tVYHLLnBN-dDUfEzvcaw9lqOIad3_FyyiCnPvE",
+  },
+};
